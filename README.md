@@ -3,6 +3,7 @@
 2. Run `npm install`
 3. To run using module directly: `npm run start`
 4. To run using api end-point: `npm run start:server` and go to `http://localhost:3000/api/users`
+5. To run test with coverage: `npm run test:coverage`
 
 ## About
 
