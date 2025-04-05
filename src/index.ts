@@ -21,7 +21,7 @@ export async function fetchData(skip: number): Promise<UsersResponse> {
     }
 }
 
-function createEmptyDepartmentInfo(): DepartmentInfo{
+export function createEmptyDepartmentInfo(): DepartmentInfo{
     return new class implements DepartmentInfo {
         male: number = 0;
         female: number = 0;
@@ -31,7 +31,7 @@ function createEmptyDepartmentInfo(): DepartmentInfo{
     }
 }
 
-function getAgeRangeObject(ageRangeString: string): AgeRange{
+export function getAgeRangeObject(ageRangeString: string): AgeRange{
     if (!ageRangeString || ageRangeString === "") {
         return new class implements AgeRange {
             max: number = Number.MIN_SAFE_INTEGER;
@@ -45,19 +45,19 @@ function getAgeRangeObject(ageRangeString: string): AgeRange{
     }
 }
 
-function getAgeRangeString(ageRangeObject: AgeRange): string{
+export function getAgeRangeString(ageRangeObject: AgeRange): string{
     return `${ageRangeObject.min}-${ageRangeObject.max}`;
 }
 
 
-function getUpdatedAgeRange(age: number, ageRange: string): string {
+export function getUpdatedAgeRange(age: number, ageRange: string): string {
     const rangeObj = getAgeRangeObject(ageRange);
     rangeObj.min = Math.min(age, rangeObj.min);
     rangeObj.max = Math.max(age, rangeObj.max);
     return getAgeRangeString(rangeObj);
 }
 
-function updateGender(gender: "male" | "female", departmentInfo: DepartmentInfo) {
+export function updateGender(gender: "male" | "female", departmentInfo: DepartmentInfo) {
     if (gender === 'male') {
         departmentInfo.male++;
     } else {
@@ -65,12 +65,12 @@ function updateGender(gender: "male" | "female", departmentInfo: DepartmentInfo)
     }
 }
 
-function updateHairColor(departmentInfo: DepartmentInfo, hairColor: string) {
+export function updateHairColor(departmentInfo: DepartmentInfo, hairColor: string) {
     const hairColorCount: number = departmentInfo.hair[hairColor] ?? 0;
     departmentInfo.hair[hairColor] = hairColorCount + 1;
 }
 
-function updateAddress(firstName: string, lastName: string, departmentInfo: DepartmentInfo, postalCode: string) {
+export function updateAddress(firstName: string, lastName: string, departmentInfo: DepartmentInfo, postalCode: string) {
     const nameKey = firstName + lastName;
     departmentInfo.addressUser[nameKey] = postalCode;
 }
