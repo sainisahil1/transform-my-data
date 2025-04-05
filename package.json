@@ -1,0 +1,26 @@
+{
+  "name": "transform-my-data",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "start:server": "ts-node src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate:proto": "grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:./src/generated --ts_out=./src/generated --grpc_out=./src/generated -I ./proto ./proto/users.proto"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "grpc_tools_node_protoc_ts": "^5.3.3",
+    "grpc-tools": "^1.13.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
